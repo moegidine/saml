@@ -1,6 +1,17 @@
 #!/bin/bash
 
-python3.9 -m venv venv
+PYTHON_VERSION=$(python --version | awk '{print $2}')
+
+MIN_VERSION="3.6.8"
+
+if [[ $(printf '%s\n' "$PYTHON_VERSION" "$MIN_VERSION" | sort -V | head -n1) = "$MIN_VERSION" ]]; then
+    python -m venv venv
+else
+    echo "python version is $PYTHON_VERSION, which is less than $MIN_VERSION. Not running the command."
+    exit 1
+fi
+
+
 
 if [ -f "venv/bin/activate" ]; then
     source venv/bin/activate
