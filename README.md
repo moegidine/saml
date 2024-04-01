@@ -8,7 +8,13 @@
 
 ## requirements
 
-- `python` >= 3.9
+- `python` >= 3.6.8
+- `pyenv`
+   - run :
+   - ```
+     pyenv install x.x.x
+     pyenv global x.x.x
+     ```
 
 ## run
 
