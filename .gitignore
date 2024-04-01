@@ -1,0 +1,6 @@
+venv
+*.pem
+__pycache__
+*.log
+*.swp
+*.swo

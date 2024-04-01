@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='apple-touch-icon.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', filename='favicon-32x32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='favicon-16x16.png') }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', filename='site.webmanifest') }}"
+    />
+  </head>
+  <body>
+    <center>
+      <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt="Logo"
+        style="width: 500px"
+      />
+      <br />
+      <br />
+      <form action="{{ action }}" method="post">
+        <input type="hidden" name="metadata" value="{{ data }}" />
+        <input type="hidden" name="referrer" value="{{ referrer }}" />
+        <input type="hidden" name="token" id="token" />
+        <input type="text" name="username" />
+        <br />
+        <br />
+        <input type="password" name="password" />
+        <br />
+        <br />
+        <input type="submit" value="LOGIN" />
+        <br />
+        <br />
+        {% if error %}
+        <label>{{ error }}</label>
+        {% endif %}
+      </form>
+    </center>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var token = getCookie("DomainToken");
+      document.getElementById("token").value = token;
+    });
+
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+  </script>
+</html>

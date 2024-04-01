@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='apple-touch-icon.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', filename='favicon-32x32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='favicon-16x16.png') }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', filename='site.webmanifest') }}"
+    />
+  </head>
+  <body>
+    <center>
+      <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt="Logo"
+        style="width: 500px"
+      />
+      <br />
+      <h3>Select an IDP</h3>
+      <br />
+      <br />
+      <form action="{{ action }}" method="post">
+        <input type="hidden" name="metadata" value="{{ data }}" />
+        <input type="hidden" name="referrer" value="{{ referrer }}" />
+        <select name="idp">
+          {% for idp in idps %}
+          <option value="{{ idp[0] }}">{{ idp[0] }}</option>
+          {% endfor %}
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="SELECT" />
+      </form>
+    </center>
+  </body>
+</html>
